@@ -24,7 +24,8 @@ public abstract class Article{
     protected String title;
     protected String author;
     protected String yearPublication;
-    protected String typeArticle;
+    protected String articleType;
     protected int nombreExemplaires = 0;
+
 
 }

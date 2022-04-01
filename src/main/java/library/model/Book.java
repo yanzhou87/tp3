@@ -19,4 +19,7 @@ public class Book extends Article {
     private String editor;
     private int numbrePages;
 
+    public Book(String name) {
+        this.title = name;
+    }
 }
