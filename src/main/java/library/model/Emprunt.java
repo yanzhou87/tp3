@@ -24,8 +24,8 @@ public class Emprunt {
     private Client client;
 
     @OneToOne
-    @JoinColumn(name = "ARTICLE_ID")
-    private Article article;
+    @JoinColumn(name = "EXEMPLAIRE_ID")
+    private Exemplaire exemplaire;
 
     private LocalDateTime date;
     private boolean isReturn = false;

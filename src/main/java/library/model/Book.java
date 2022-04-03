@@ -22,4 +22,5 @@ public class Book extends Article {
     public Book(String name) {
         this.title = name;
     }
+
 }

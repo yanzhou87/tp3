@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -25,6 +26,7 @@ public abstract class LibraryUser {
     protected String lastName;
     protected int age;
     protected String address;
+
 
 
 }

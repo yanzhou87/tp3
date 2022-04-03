@@ -1,6 +1,6 @@
 package library;
 
-import library.model.*;
+import library.model.Article;
 import library.repository.*;
 import library.service.ServiceLibrary;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +8,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.List;
-import java.util.Optional;
 
 @SpringBootApplication
 public class MainLibrary implements CommandLineRunner {
@@ -39,8 +37,9 @@ public class MainLibrary implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-      long bookId = serviceLibrary.saveBook("book");
-        System.out.println(serviceLibrary.findBookById(bookId));
+      final Article book = serviceLibrary.saveBook("book");
+
+    //    System.out.println(articleRepository.findArticleById(book.getId()));
 //      long cdId = serviceLibrary.saveCD("cd");
 //      long dvdId = serviceLibrary.saveDVD("dvd");
 //      serviceLibrary.saveExemplaire(bookId, 10);

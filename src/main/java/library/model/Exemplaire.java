@@ -17,7 +17,7 @@ public class Exemplaire {
     private long id;
 
     @ManyToOne
-    @JoinColumn(name = "article_id")
+    @JoinColumn(name = "ARTICLE_ID")
     private Article article;
     private boolean isBorrowed = false;
 }

@@ -17,7 +17,7 @@ public class Amende {
     @GeneratedValue( generator = "amande_seq")
     private long id;
     @ManyToOne
-    @JoinColumn(name = "client_id")
+    @JoinColumn(name = "CLIENT_ID")
     private Client client;
     private long amendeForDay = 2L;
     private long sommeAmende;
