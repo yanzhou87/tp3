@@ -33,10 +33,10 @@ public class ServiceLibrary{
         return articleRepository.save(new CD(CdName));
     }
 
-//    public Article saveDVD(String dvdName) {
-//        return articleRepository.save(new DVD(dvdName));
-//    }
-//
+    public Article saveDVD(String dvdName) {
+        return articleRepository.save(new DVD(dvdName));
+    }
+
 //    public void saveExemplaire(Article article, int nbSave) {
 //        for(int i = 0 ; i < nbSave ; i ++){
 //            exemplaireRepository.save(new Exemplaire(article));

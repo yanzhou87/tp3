@@ -42,7 +42,7 @@ public class MainLibrary implements CommandLineRunner {
        System.out.println(articleRepository.findArticleById(book.getId()));
 
       final Article cd = serviceLibrary.saveCD("cd");
-    //  final Article dvd = serviceLibrary.saveDVD("dvd");
+      final Article dvd = serviceLibrary.saveDVD("dvd");
      // serviceLibrary.saveExemplaire(book, 10);
 
 //      List<Object[]> books = articleRepository.findBookByName("book");
