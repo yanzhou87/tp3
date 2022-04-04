@@ -32,14 +32,6 @@ public class ServiceLibrary{
         return articleRepository.save(article);
     }
 
-    public CD saveCD(String CdName) {
-        return articleRepository.save(new CD(CdName));
-    }
-
-    public Article saveDVD(String dvdName) {
-        return articleRepository.save(new DVD(dvdName));
-    }
-
     public List<Exemplaire> saveExemplaire(Article article, int nbSave) {
         List<Exemplaire> exemplaires = new ArrayList<>();
         for(int i = 0 ; i < nbSave ; i ++){
@@ -48,5 +40,7 @@ public class ServiceLibrary{
         }
        return exemplaires;
     }
+
+
 }
 
