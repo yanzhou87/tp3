@@ -8,8 +8,6 @@ import java.util.List;
 
 @Entity
 @Data
-@Builder
-@AllArgsConstructor
 @NoArgsConstructor
 @DiscriminatorValue("client")
 
@@ -21,4 +19,9 @@ public class Client extends LibraryUser {
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
     private List<Amende> amendes = new ArrayList<>();
 
+    public Client(String firstName, String lastName, int age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+    }
 }

@@ -54,10 +54,10 @@ public class MainLibrary implements CommandLineRunner {
       List<Object[]> books = articleRepository.findBookBySeach("2010");
       Object[] book1 = books.get(0);
       System.out.println(book1[0]);
-//
-//      long clientId = serviceLibrary.saveClient("Yan", "Zhou");
+
+      LibraryUser client = serviceLibrary.saveUser(new Client("Yan", "Zhou", 99));
 //      long empruntId = serviceLibrary.saveEmprunt(bookId, clientId);
 //
-//      Optional<Client> client = LibraryUserRepository.findClientByIdWithEmprunts(clientId);
+ //     Optional<Client> client = LibraryUserRepository.findClientByIdWithEmprunts(client.getId());
     }
 }

@@ -42,5 +42,8 @@ public class ServiceLibrary{
     }
 
 
+    public LibraryUser saveUser(LibraryUser libraryUseruser) {
+        return libraryUserRepository.save(libraryUseruser);
+    }
 }
 
