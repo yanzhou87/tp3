@@ -6,6 +6,9 @@ import library.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Component
 public class ServiceLibrary{
@@ -37,13 +40,13 @@ public class ServiceLibrary{
         return articleRepository.save(new DVD(dvdName));
     }
 
-//    public List<Exemplaire> saveExemplaire(Article article, int nbSave) {
-//        List<Exemplaire> exemplaires = new ArrayList<>();
-//        for(int i = 0 ; i < nbSave ; i ++){
-//           Exemplaire exemplaire = exemplaireRepository.save(new Exemplaire(article));
-//            exemplaires.add(exemplaire);
-//        }
-//       return exemplaires;
-//    }
+    public List<Exemplaire> saveExemplaire(Article article, int nbSave) {
+        List<Exemplaire> exemplaires = new ArrayList<>();
+        for(int i = 0 ; i < nbSave ; i ++){
+           Exemplaire exemplaire = exemplaireRepository.save(new Exemplaire(article));
+           exemplaires.add(exemplaire);
+        }
+       return exemplaires;
+    }
 }
 
