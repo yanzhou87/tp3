@@ -60,9 +60,9 @@ public class MainLibrary implements CommandLineRunner {
 
       LibraryUser client = serviceLibrary.saveUser(new Client("Yan", "Zhou", 99));
 
-      Emprunt emprunt = serviceLibrary.saveEmprunt(book,exemplaires, (Client) client, LocalDateTime.now());//需要添加git
+      Emprunt emprunt = serviceLibrary.saveEmprunt(book,exemplaires, (Client) client, LocalDateTime.now());
 // 添加给这个客人一个emprunt
-        serviceLibrary.addEmpruntToClient(emprunt, client);
+        serviceLibrary.addEmpruntToClient(emprunt.getId(), client.getId());
         //save client
         libraryUserRepository.save(client);
 

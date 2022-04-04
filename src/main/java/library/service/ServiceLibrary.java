@@ -51,19 +51,34 @@ public class ServiceLibrary{
         boolean isAddExemplaire = false;
         Emprunt emprunt = new Emprunt();
 
-        for(Exemplaire exemplaire : exemplaires){
-            if(!exemplaire.isBorrowed() && !isAddExemplaire){
-                emprunt.setExemplaire(exemplaire);
-                emprunt.setClient(client);
-                emprunt.setDate(date);
-                exemplaire.setBorrowed(true);
-                exemplaireRepository.save(exemplaire);
+        if(article.getNombreExemplaires() != 0){
+            for(Exemplaire exemplaire : exemplaires){
+                if(!exemplaire.isBorrowed() && !isAddExemplaire){
+                    emprunt.setExemplaire(exemplaire);
+                    emprunt.setClient(client);
+                    emprunt.setDate(date);
+                    exemplaire.setBorrowed(true);
+                    exemplaireRepository.save(exemplaire);
+                }
             }
         }
+
         article.setNombreExemplaires(article.getNombreExemplaires()-1);
         articleRepository.save(article);
 
         return empruntRepository.save(emprunt);
+    }
+
+    public void addEmpruntToClient(long empruntId, long clientId) {
+        var empruntOpt = empruntRepository.findEmpruntById(empruntId);
+        var clientOpt = libraryUserRepository.findClientById(clientId);
+
+       Emprunt  emprunt = empruntOpt.get();
+       Client client = clientOpt.get();
+
+       client.addEmprunt(emprunt);
+       libraryUserRepository.save(client);
+
     }
 }
 
