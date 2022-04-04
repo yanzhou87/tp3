@@ -18,4 +18,7 @@ public class CD extends Article{
 
     private double durationMovie;
 
+    public CD(String title) {
+        super(title);
+    }
 }

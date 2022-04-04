@@ -20,4 +20,8 @@ public class Exemplaire {
     @JoinColumn(name = "ARTICLE_ID")
     private Article article;
     private boolean isBorrowed = false;
+
+    public Exemplaire(Article article) {
+        this.article = article;
+    }
 }

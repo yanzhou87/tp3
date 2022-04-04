@@ -10,5 +10,5 @@ import java.util.Optional;
 public interface ArticleRepository extends JpaRepository<Article,Long>{
 
     @Query("select a.id, a.title from Article a where a.id = :bookId")
-     Optional<Article> findArticleById(@Param("bookId")long bookId);
+     Optional<Object> findArticleById(@Param("bookId")long bookId);
 }
