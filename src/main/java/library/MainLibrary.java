@@ -39,10 +39,7 @@ public class MainLibrary implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-      final Article book = serviceLibrary.saveArticle(new Book("book"));
-
-       System.out.println(articleRepository.findArticleById(book.getId()));
-
+      final Article book = serviceLibrary.saveArticle(new Book("book","yan","2010-02-09","Roman","yanZhou",300));
       final Article cd = serviceLibrary.saveArticle(new CD("cd"));
       final Article dvd = serviceLibrary.saveArticle(new DVD("dvd"));
 
@@ -51,8 +48,12 @@ public class MainLibrary implements CommandLineRunner {
       serviceLibrary.saveArticle(book);
       book.setExemplaires(exemplaires);
       serviceLibrary.saveArticle(book);
-//      List<Object[]> books = articleRepository.findBookByName("book");
-//      Object[] book = books.get(0);
+
+      System.out.println(articleRepository.findArticleById(book.getId()));
+
+      List<Object[]> books = articleRepository.findBookBySeach("2010");
+      Object[] book1 = books.get(0);
+      System.out.println(book1[0]);
 //
 //      long clientId = serviceLibrary.saveClient("Yan", "Zhou");
 //      long empruntId = serviceLibrary.saveEmprunt(bookId, clientId);

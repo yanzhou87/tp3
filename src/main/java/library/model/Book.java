@@ -7,11 +7,10 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import java.util.List;
 
 @Entity
 @Data
-@Builder
-@AllArgsConstructor
 @NoArgsConstructor
 @DiscriminatorValue("book")
 public class Book extends Article {
@@ -23,4 +22,26 @@ public class Book extends Article {
         this.title = name;
     }
 
+    public Book(String title, String author, String yearPublication, String articleType, String editor, int numbrePages) {
+        this.title = title;
+        this.author = author;
+        this.yearPublication = yearPublication;
+        this.articleType = articleType;
+        this.editor = editor;
+        this.numbrePages = numbrePages;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", yearPublication='" + yearPublication + '\'' +
+                ", articleType='" + articleType + '\'' +
+                ", nombreExemplaires=" + nombreExemplaires +
+                ", editor='" + editor + '\'' +
+                ", numbrePages=" + numbrePages +
+                '}';
+    }
 }

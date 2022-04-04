@@ -4,6 +4,7 @@ package library.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
@@ -21,7 +22,8 @@ public abstract class Article{
     @GeneratedValue(generator = "article_seq")
     protected long id;
 
-    @OneToMany(mappedBy = "article")
+    @OneToMany(mappedBy = "article",  cascade = CascadeType.ALL)
+    @ToString.Exclude
     protected List<Exemplaire> exemplaires;
 
     protected String title;
@@ -35,5 +37,15 @@ public abstract class Article{
         this.title = title;
     }
 
-
+    @Override
+    public String toString() {
+        return "Article{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", yearPublication='" + yearPublication + '\'' +
+                ", articleType='" + articleType + '\'' +
+                ", nombreExemplaires=" + nombreExemplaires +
+                '}';
+    }
 }
