@@ -14,5 +14,5 @@ public interface ArticleRepository extends JpaRepository<Article,Long>{
      Optional<Article> findArticleById(@Param("bookId")long bookId);
 
     @Query("select a from Article a where a.title like %:seach% or a.author like %:seach% or a.yearPublication like %:seach% or a.articleType like %:seach%"  )
-    List<Object[]> findBookBySeach(String seach);
+    List<Object[]> findBookBySeach(@Param("seach") String seach);
 }

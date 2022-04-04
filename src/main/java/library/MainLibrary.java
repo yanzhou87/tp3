@@ -43,6 +43,8 @@ public class MainLibrary implements CommandLineRunner {
       final Article cd = serviceLibrary.saveArticle(new CD("cd"));
       final Article dvd = serviceLibrary.saveArticle(new DVD("dvd"));
 
+      System.out.println(articleRepository.findArticleById(book.getId()));
+
       List<Exemplaire> exemplaires = serviceLibrary.saveExemplaire(book, 10);
       book.setNombreExemplaires(exemplaires.size());
       serviceLibrary.saveArticle(book);
@@ -56,7 +58,8 @@ public class MainLibrary implements CommandLineRunner {
       System.out.println(book1[0]);
 
       LibraryUser client = serviceLibrary.saveUser(new Client("Yan", "Zhou", 99));
-//      long empruntId = serviceLibrary.saveEmprunt(bookId, clientId);
+      System.out.println(libraryUserRepository.findClientById(client.getId()));
+      Emprunt emprunt = serviceLibrary.saveEmprunt(bookId, clientId);
 //
  //     Optional<Client> client = LibraryUserRepository.findClientByIdWithEmprunts(client.getId());
     }
