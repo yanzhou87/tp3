@@ -6,8 +6,10 @@ import library.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @Component
@@ -41,9 +43,27 @@ public class ServiceLibrary{
        return exemplaires;
     }
 
-
     public LibraryUser saveUser(LibraryUser libraryUseruser) {
-        return libraryUserRepository.save(libraryUseruser);
+        return  libraryUserRepository.save(libraryUseruser);
+    }
+
+    public Emprunt saveEmprunt(Article article, List<Exemplaire> exemplaires, Client client, LocalDateTime date){
+        boolean isAddExemplaire = false;
+        Emprunt emprunt = new Emprunt();
+
+        for(Exemplaire exemplaire : exemplaires){
+            if(!exemplaire.isBorrowed() && !isAddExemplaire){
+                emprunt.setExemplaire(exemplaire);
+                emprunt.setClient(client);
+                emprunt.setDate(date);
+                exemplaire.setBorrowed(true);
+                exemplaireRepository.save(exemplaire);
+            }
+        }
+        article.setNombreExemplaires(article.getNombreExemplaires()-1);
+        articleRepository.save(article);
+
+        return empruntRepository.save(emprunt);
     }
 }
 

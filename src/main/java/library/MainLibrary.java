@@ -8,6 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -58,9 +59,13 @@ public class MainLibrary implements CommandLineRunner {
       System.out.println(book1[0]);
 
       LibraryUser client = serviceLibrary.saveUser(new Client("Yan", "Zhou", 99));
+
+      Emprunt emprunt = serviceLibrary.saveEmprunt(book,exemplaires, (Client) client, LocalDateTime.now());//需要添加git
+// 添加给这个客人一个emprunt
+        serviceLibrary.addEmpruntToClient(emprunt, client);
+        //save client
+        libraryUserRepository.save(client);
+
       System.out.println(libraryUserRepository.findClientById(client.getId()));
-      Emprunt emprunt = serviceLibrary.saveEmprunt(bookId, clientId);
-//
- //     Optional<Client> client = LibraryUserRepository.findClientByIdWithEmprunts(client.getId());
     }
 }
