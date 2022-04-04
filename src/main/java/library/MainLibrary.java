@@ -1,12 +1,16 @@
 package library;
 
 import library.model.Article;
+import library.model.Book;
+import library.model.Exemplaire;
 import library.repository.*;
 import library.service.ServiceLibrary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.util.List;
 
 
 @SpringBootApplication
@@ -37,14 +41,15 @@ public class MainLibrary implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-      final Article book = serviceLibrary.saveBook("book");
+      final Article book = serviceLibrary.saveArticle(new Book("book"));
 
        System.out.println(articleRepository.findArticleById(book.getId()));
 
       final Article cd = serviceLibrary.saveCD("cd");
       final Article dvd = serviceLibrary.saveDVD("dvd");
-     // serviceLibrary.saveExemplaire(book, 10);
-
+//      List<Exemplaire> exemplaires = serviceLibrary.saveExemplaire(book, 10);
+//      book.setNombreExemplaires(exemplaires.size());
+//      serviceLibrary.saveArticle(book);
 //      List<Object[]> books = articleRepository.findBookByName("book");
 //      Object[] book = books.get(0);
 //

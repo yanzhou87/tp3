@@ -25,8 +25,8 @@ public class ServiceLibrary{
     @Autowired
     private AmendeRepository amendeRepository;
 
-    public Article saveBook(String name) {
-        return articleRepository.save(new Book(name));
+    public Article saveArticle(Article article) {
+        return articleRepository.save(article);
     }
 
     public CD saveCD(String CdName) {
@@ -37,11 +37,13 @@ public class ServiceLibrary{
         return articleRepository.save(new DVD(dvdName));
     }
 
-//    public void saveExemplaire(Article article, int nbSave) {
+//    public List<Exemplaire> saveExemplaire(Article article, int nbSave) {
+//        List<Exemplaire> exemplaires = new ArrayList<>();
 //        for(int i = 0 ; i < nbSave ; i ++){
-//            exemplaireRepository.save(new Exemplaire(article));
+//           Exemplaire exemplaire = exemplaireRepository.save(new Exemplaire(article));
+//            exemplaires.add(exemplaire);
 //        }
-// //需要更改article里的备份数量
-  //  }
+//       return exemplaires;
+//    }
 }
 
