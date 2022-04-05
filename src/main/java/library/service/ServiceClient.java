@@ -56,7 +56,8 @@ public class ServiceClient {
 
                 java. time.Duration duration = java.time.Duration.between(emprunt.getDateReturn(),  emprunt.getDateEmprunt() );
                if(duration.toDays() > 21){
-                   amendeRepository.save(new Amende(client, duration.toDays()));
+                   Amende amende = new Amende(client, duration.toDays());
+                   amendeRepository.save(amende);
 
                }
             }

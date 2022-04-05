@@ -43,4 +43,9 @@ public class Client extends LibraryUser {
         emprunts.add(emprunt);
         emprunt.setClient(this);
     }
+
+    public void addAmende(Amende amende) {
+        amendes.add(amende);
+        amende.setClient(this);
+    }
 }
