@@ -13,12 +13,10 @@ import java.util.List;
 
 public class Client extends LibraryUser {
 
-    @OneToMany(mappedBy = "client",cascade = CascadeType.ALL)
-
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
     private List<Emprunt> emprunts = new ArrayList<>();
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
-    @ToString.Exclude
     private List<Amende> amendes = new ArrayList<>();
 
     public Client(String firstName, String lastName, int age) {

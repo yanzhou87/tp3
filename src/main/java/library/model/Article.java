@@ -17,12 +17,12 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name = "ARTICLE")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public abstract class Article{
+public abstract class Article {
     @Id
     @GeneratedValue(generator = "article_seq")
     protected long id;
 
-    @OneToMany(mappedBy = "article",  cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
     @ToString.Exclude
     protected List<Exemplaire> exemplaires;
 

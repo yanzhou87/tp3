@@ -44,22 +44,22 @@ public class ServiceClient {
     }
 
     public void returnEmprunt(Client client, long bookId, LocalDateTime dateReturn) {
-        for(Emprunt emprunt : client.getEmprunts()){
-            if(emprunt.getExemplaire().getArticle().getId() == bookId){
+        for (Emprunt emprunt : client.getEmprunts()) {
+            if (emprunt.getExemplaire().getArticle().getId() == bookId) {
                 emprunt.setReturn(true);
-                emprunt.getExemplaire().getArticle().setNombreExemplaires( emprunt.getExemplaire().getArticle().getNombreExemplaires() +1);
+                emprunt.getExemplaire().getArticle().setNombreExemplaires(emprunt.getExemplaire().getArticle().getNombreExemplaires() + 1);
                 emprunt.getExemplaire().setBorrowed(false);
                 emprunt.setDateReturn(dateReturn);
                 articleRepository.save(emprunt.getExemplaire().getArticle());
                 exemplaireRepository.save(emprunt.getExemplaire());
                 empruntRepository.save(emprunt);
 
-                java. time.Duration duration = java.time.Duration.between(emprunt.getDateReturn(),  emprunt.getDateEmprunt() );
-               if(duration.toDays() > 21){
-                   Amende amende = new Amende(client, duration.toDays());
-                   amendeRepository.save(amende);
-
-               }
+                java.time.Duration duration = java.time.Duration.between(emprunt.getDateReturn(), emprunt.getDateEmprunt());
+                if (duration.toDays() > 21) {
+                    Amende amende = new Amende(client, duration.toDays());
+                    amendeRepository.save(amende);
+                    client.addAmende(amende);
+                }
             }
         }
     }

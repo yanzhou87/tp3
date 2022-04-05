@@ -12,7 +12,7 @@ import java.util.List;
 
 
 @Component
-public class ServiceLibrary{
+public class ServiceLibrary {
 
     @Autowired
     private ArticleRepository articleRepository;
@@ -35,25 +35,25 @@ public class ServiceLibrary{
 
     public List<Exemplaire> saveExemplaire(Article article, int nbSave) {
         List<Exemplaire> exemplaires = new ArrayList<>();
-        for(int i = 0 ; i < nbSave ; i ++){
-           Exemplaire exemplaire = exemplaireRepository.save(new Exemplaire(article));
-           exemplaires.add(exemplaire);
+        for (int i = 0; i < nbSave; i++) {
+            Exemplaire exemplaire = exemplaireRepository.save(new Exemplaire(article));
+            exemplaires.add(exemplaire);
         }
-       return exemplaires;
+        return exemplaires;
     }
 
     public LibraryUser saveUser(LibraryUser libraryUseruser) {
-        return  libraryUserRepository.save(libraryUseruser);
+        return libraryUserRepository.save(libraryUseruser);
     }
 
-    public Emprunt saveEmprunt(Article article, List<Exemplaire> exemplaires, Client client, LocalDateTime date){
+    public Emprunt saveEmprunt(Article article, List<Exemplaire> exemplaires, Client client, LocalDateTime date) {
         boolean isAddExemplaire = false;
         Emprunt emprunt = new Emprunt();
 
-        if(article.getNombreExemplaires() != 0){
-            for(Exemplaire exemplaire : exemplaires){
+        if (article.getNombreExemplaires() != 0) {
+            for (Exemplaire exemplaire : exemplaires) {
 
-                if(!exemplaire.isBorrowed() && !isAddExemplaire){
+                if (!exemplaire.isBorrowed() && !isAddExemplaire) {
                     emprunt.setExemplaire(exemplaire);
                     emprunt.setClient(client);
                     emprunt.setDateEmprunt(date);
@@ -64,7 +64,7 @@ public class ServiceLibrary{
             }
         }
 
-        article.setNombreExemplaires(article.getNombreExemplaires()-1);
+        article.setNombreExemplaires(article.getNombreExemplaires() - 1);
         articleRepository.save(article);
         return empruntRepository.save(emprunt);
     }
@@ -73,11 +73,11 @@ public class ServiceLibrary{
         var empruntOpt = empruntRepository.findEmpruntById(empruntId);
         var clientOpt = libraryUserRepository.findClientById(clientId);
 
-       Emprunt  emprunt = empruntOpt.get();
-       Client client = clientOpt.get();
+        Emprunt emprunt = empruntOpt.get();
+        Client client = clientOpt.get();
 
-       client.addEmprunt(emprunt);
-       libraryUserRepository.save(client);
+        client.addEmprunt(emprunt);
+        libraryUserRepository.save(client);
 
     }
 //    public void addEmpruntToClient(Emprunt emprunt, Client client) {
