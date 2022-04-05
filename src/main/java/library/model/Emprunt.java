@@ -27,7 +27,8 @@ public class Emprunt {
     @JoinColumn(name = "EXEMPLAIRE_ID")
     private Exemplaire exemplaire;
 
-    private LocalDateTime date;
+    private LocalDateTime dateEmprunt;
+    private LocalDateTime dateReturn;
     private boolean isReturn = false;
 
     @Override
@@ -36,7 +37,7 @@ public class Emprunt {
                 "id=" + id +
                 ", client=" + client.firstName +
                 ", exemplaire=" + exemplaire +
-                ", date=" + date +
+                ", date=" + dateEmprunt +
                 ", isReturn=" + isReturn +
                 '}';
     }

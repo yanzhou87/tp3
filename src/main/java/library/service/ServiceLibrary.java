@@ -56,7 +56,7 @@ public class ServiceLibrary{
                 if(!exemplaire.isBorrowed() && !isAddExemplaire){
                     emprunt.setExemplaire(exemplaire);
                     emprunt.setClient(client);
-                    emprunt.setDate(date);
+                    emprunt.setDateEmprunt(date);
                     exemplaire.setBorrowed(true);
                     exemplaireRepository.save(exemplaire);
                     isAddExemplaire = true;
@@ -69,23 +69,22 @@ public class ServiceLibrary{
         return empruntRepository.save(emprunt);
     }
 
-//    public void addEmpruntToClient(long empruntId, long clientId) {
-//        var empruntOpt = empruntRepository.findEmpruntById(empruntId);
-//        var clientOpt = libraryUserRepository.findClientById(clientId);
-//
-//
-//       Emprunt  emprunt = empruntOpt.get();
-//       Client client = clientOpt.get();
-//
-//       client.addEmprunt(emprunt);
-//       libraryUserRepository.save(client);
-//
-//    }
-    public void addEmpruntToClient(Emprunt emprunt, Client client) {
+    public void addEmpruntToClient(long empruntId, long clientId) {
+        var empruntOpt = empruntRepository.findEmpruntById(empruntId);
+        var clientOpt = libraryUserRepository.findClientById(clientId);
 
-        client.addEmprunt(emprunt);
-        libraryUserRepository.save(client);
+       Emprunt  emprunt = empruntOpt.get();
+       Client client = clientOpt.get();
+
+       client.addEmprunt(emprunt);
+       libraryUserRepository.save(client);
 
     }
+//    public void addEmpruntToClient(Emprunt emprunt, Client client) {
+//
+//        client.addEmprunt(emprunt);
+//        libraryUserRepository.save(client);
+//
+//    }
 }
 

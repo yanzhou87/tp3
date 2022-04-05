@@ -9,8 +9,6 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Builder
-@AllArgsConstructor
 @NoArgsConstructor
 public class Amende {
     @Id
@@ -19,6 +17,11 @@ public class Amende {
     @ManyToOne
     @JoinColumn(name = "CLIENT_ID")
     private Client client;
-    private long amendeForDay = 21L;
+    private long amendeForDay = 2L;
     private long sommeAmende;
+
+    public Amende(Client client,  long duration) {
+        this.client = client;
+        this.sommeAmende = duration * amendeForDay;
+    }
 }

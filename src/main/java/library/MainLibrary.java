@@ -55,12 +55,12 @@ public class MainLibrary implements CommandLineRunner {
         Object[] emprunt1 = emprunts.get(0);
         System.out.println(emprunt1[0]);
 
-      //  serviceLibrary.addEmpruntToClient(emprunt.getId(), client.getId()); 这里有问题
-       serviceLibrary.addEmpruntToClient(emprunt, (Client)client); //这个好使 为什么
+        serviceLibrary.addEmpruntToClient(emprunt.getId(), client.getId());
+       //serviceLibrary.addEmpruntToClient(emprunt, (Client)client); 哪个好
 
        System.out.println(serviceClient.findClientById(client.getId()));
-     //返回书
-      //  serviceLibrary.returnEmprunt(client,emprunt);//还书需要创建一个类吗
+       //返回书
+        serviceClient.returnEmprunt((Client) client,book.getId(),LocalDateTime.now());
         //创建罚款
     }
 }
