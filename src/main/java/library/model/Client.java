@@ -13,8 +13,9 @@ import java.util.List;
 
 public class Client extends LibraryUser {
 
-    @OneToMany(mappedBy = "client",  cascade = CascadeType.ALL)
-    private List<Emprunt> emprunts;
+    @OneToMany(mappedBy = "client",cascade = CascadeType.ALL)
+
+    private List<Emprunt> emprunts = new ArrayList<>();
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
     @ToString.Exclude
@@ -36,5 +37,10 @@ public class Client extends LibraryUser {
                 ", address='" + address + '\'' +
                 ", emprunts='" + emprunts + '\'' +
                 '}';
+    }
+
+    public void addEmprunt(Emprunt emprunt) {
+        emprunts.add(emprunt);
+        emprunt.setClient(this);
     }
 }

@@ -30,5 +30,14 @@ public class Emprunt {
     private LocalDateTime date;
     private boolean isReturn = false;
 
-
+    @Override
+    public String toString() {
+        return "Emprunt{" +
+                "id=" + id +
+                ", client=" + client.firstName +
+                ", exemplaire=" + exemplaire +
+                ", date=" + date +
+                ", isReturn=" + isReturn +
+                '}';
+    }
 }

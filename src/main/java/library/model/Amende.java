@@ -19,6 +19,6 @@ public class Amende {
     @ManyToOne
     @JoinColumn(name = "CLIENT_ID")
     private Client client;
-    private long amendeForDay = 2L;
+    private long amendeForDay = 21L;
     private long sommeAmende;
 }
