@@ -6,9 +6,9 @@ import lombok.Data;
 @Data
 public class SaveClientForm {
     private String id;
-    private final String firstName;
-    private final String lastName;
-    private final int age;
+    private  String firstName;
+    private  String lastName;
+    private  int age;
 
     public SaveClientForm(String id, String firstName, String lastName, int age) {
         this.id = id;
@@ -17,6 +17,7 @@ public class SaveClientForm {
         this.age = age;
     }
 
+    public SaveClientForm(){}
     public SaveClientForm(Client client){
         this(Long.toString(client.getId()),client.getFirstName(),client.getLastName(),client.getAge());
     }

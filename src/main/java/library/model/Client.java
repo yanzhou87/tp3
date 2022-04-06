@@ -34,6 +34,7 @@ public class Client extends LibraryUser {
                 ", age=" + age +
                 ", address='" + address + '\'' +
                 ", emprunts='" + emprunts + '\'' +
+                ", amendes='" + amendes + '\'' +
                 '}';
     }
 

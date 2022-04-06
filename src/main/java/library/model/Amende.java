@@ -24,4 +24,14 @@ public class Amende {
         this.client = client;
         this.sommeAmende = duration * amendeForDay;
     }
+
+    @Override
+    public String toString() {
+        return "Amende{" +
+                "id=" + id +
+                ", client=" + client.firstName +
+                ", amendeForDay=" + amendeForDay +
+                ", sommeAmende=" + sommeAmende +
+                '}';
+    }
 }

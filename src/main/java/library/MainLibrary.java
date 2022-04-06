@@ -9,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -65,8 +66,9 @@ public class MainLibrary implements CommandLineRunner {
 
 
         System.out.println("///// après retourner un emprunt //////");
-        serviceClient.returnEmprunt((Client) client, book.getId(), LocalDateTime.now());
+        serviceClient.returnEmprunt((Client) client, book.getId(), LocalDateTime.of(2023,3,3,12,20));
         System.out.println(serviceClient.findClientById(client.getId()));
+
 
     }
 }
