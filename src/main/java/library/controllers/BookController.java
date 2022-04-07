@@ -33,17 +33,17 @@ public class BookController {
         return "saveBook";
     }
 
-//
-//    @PostMapping("/bookcreate")
-//    public String bookPost(@ModelAttribute SaveBookForm saveBookForm,
-//                             BindingResult errors,
-//                             Model model,
-//                             RedirectAttributes redirectAttributes) {
-//        logger.info("book: " + saveBookForm);
-//        serviceLibrary.saveArticle(saveBookForm.toBook());
-//        redirectAttributes.addFlashAttribute("saveBookForm",saveBookForm);
-//        saveBookForm = new SaveBookForm(new Book());
-//        model.addAttribute("saveBookForm", saveBookForm);
-//        return  "redirect:saveBook/" + saveBookForm.getId();
-//    }
+
+    @PostMapping("/bookcreate")
+    public String bookPost(@ModelAttribute SaveBookForm saveBookForm,
+                             BindingResult errors,
+                             Model model,
+                             RedirectAttributes redirectAttributes) {
+        logger.info("book: " + saveBookForm);
+        serviceLibrary.saveArticle(saveBookForm.toBook());
+        redirectAttributes.addFlashAttribute("saveBookForm",saveBookForm);
+        saveBookForm = new SaveBookForm(new Book());
+        model.addAttribute("saveBookForm", saveBookForm);
+        return  "redirect:saveBook/" + saveBookForm.getId();
+    }
 }
