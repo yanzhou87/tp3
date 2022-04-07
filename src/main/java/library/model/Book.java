@@ -31,6 +31,12 @@ public class Book extends Article {
         this.numbrePages = numbrePages;
     }
 
+    public Book(String title, String author, String articleType) {
+        this.title = title;
+        this.author = author;
+        this.articleType = articleType;
+    }
+
     @Override
     public String toString() {
         return "Book{" +

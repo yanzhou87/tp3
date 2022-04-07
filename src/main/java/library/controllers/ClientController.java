@@ -16,14 +16,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-public class RootController {
+public class ClientController {
 
-    Logger logger = LoggerFactory.getLogger(RootController.class);
+    Logger logger = LoggerFactory.getLogger(ClientController.class);
 
     private ServiceLibrary serviceLibrary;
     private ServiceClient serviceClient;
 
-    public RootController(ServiceLibrary serviceLibrary) {
+    public ClientController(ServiceLibrary serviceLibrary) {
         this.serviceLibrary = serviceLibrary;
     }
 
@@ -64,7 +64,7 @@ public class RootController {
         model.addAttribute("pageTitle", "Mon Demo");
         var clients = serviceClient.findAllClients();
         model.addAttribute("clients", clients);
-        return "profs";
+        return "clients";
     }
 }
 
