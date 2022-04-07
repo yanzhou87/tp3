@@ -23,16 +23,16 @@ public class BookController {
         this.serviceLibrary = serviceLibrary;
     }
 
-//    @GetMapping("/bookcreate")
-//    public String getBookCreate(@ModelAttribute SaveBookForm saveBookForm,
-//                                  BindingResult errors,
-//                                  Model model,
-//                                  RedirectAttributes redirectAttributes) {
-//        saveBookForm = new SaveBookForm(new Book());
-//        model.addAttribute("saveBookForm", saveBookForm);
-//        return "saveBook";
-//    }
-//
+    @GetMapping("/bookcreate")
+    public String getBookCreate(@ModelAttribute SaveBookForm saveBookForm,
+                                  BindingResult errors,
+                                  Model model,
+                                  RedirectAttributes redirectAttributes) {
+        saveBookForm = new SaveBookForm(new Book());
+        model.addAttribute("saveBookForm", saveBookForm);
+        return "saveBook";
+    }
+
 //
 //    @PostMapping("/bookcreate")
 //    public String bookPost(@ModelAttribute SaveBookForm saveBookForm,
