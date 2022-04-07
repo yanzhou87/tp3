@@ -21,4 +21,9 @@ public class CD extends Article{
     public CD(String title) {
         super(title);
     }
+
+    @Override
+    public int dayEmprunt() {
+        return 3;
+    }
 }

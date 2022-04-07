@@ -10,12 +10,13 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class BookController {
-    Logger logger = LoggerFactory.getLogger(ClientController.class);
+    Logger logger = LoggerFactory.getLogger(BookController.class);
 
     private ServiceLibrary serviceLibrary;
 
@@ -25,14 +26,22 @@ public class BookController {
 
     @GetMapping("/bookcreate")
     public String getBookCreate(@ModelAttribute SaveBookForm saveBookForm,
-                                  BindingResult errors,
-                                  Model model,
-                                  RedirectAttributes redirectAttributes) {
+                                @PathVariable(required = false)String id,
+                                Model model
+                               ) {
         saveBookForm = new SaveBookForm(new Book());
         model.addAttribute("saveBookForm", saveBookForm);
         return "saveBook";
     }
 
+    @GetMapping("/bookcreate/{id}")
+    public String getBookCreateWithId(@ModelAttribute SaveBookForm saveBookForm,
+                                 @PathVariable("id")String id,
+                                  Model model) {
+        saveBookForm = new SaveBookForm(new Book());
+        model.addAttribute("saveBookForm", saveBookForm);
+        return "saveBook";
+    }
 
     @PostMapping("/bookcreate")
     public String bookPost(@ModelAttribute SaveBookForm saveBookForm,
@@ -44,6 +53,7 @@ public class BookController {
         redirectAttributes.addFlashAttribute("saveBookForm",saveBookForm);
         saveBookForm = new SaveBookForm(new Book());
         model.addAttribute("saveBookForm", saveBookForm);
-        return  "redirect:saveBook/" + saveBookForm.getId();
+        return  "redirect:bookcreate/" + saveBookForm.getId();
     }
+
 }

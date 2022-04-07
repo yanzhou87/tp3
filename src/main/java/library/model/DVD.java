@@ -21,4 +21,9 @@ public class DVD extends Article {
     public DVD(String title) {
         super(title);
     }
+
+    @Override
+    public int dayEmprunt() {
+        return 7;
+    }
 }

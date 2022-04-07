@@ -50,13 +50,14 @@ public class ServiceClient {
                 emprunt.getExemplaire().getArticle().setNombreExemplaires(emprunt.getExemplaire().getArticle().getNombreExemplaires() + 1);
                 emprunt.getExemplaire().setBorrowed(false);
                 emprunt.setDateReturn(dateReturn);
+
                 articleRepository.save(emprunt.getExemplaire().getArticle());
                 exemplaireRepository.save(emprunt.getExemplaire());
                 empruntRepository.save(emprunt);
 
                 java.time.Duration duration = java.time.Duration.between( emprunt.getDateEmprunt(),emprunt.getDateReturn());
 
-                if (duration.toDays() > 21) {
+                if (duration.toDays() > emprunt.getExemplaire().getArticle().dayEmprunt()) {
                     Amende amende = new Amende(client, duration.toDays());
                     amendeRepository.save(amende);
                     client.addAmende(amende);
@@ -69,6 +70,6 @@ public class ServiceClient {
     }
 
     public List<LibraryUser> findAllClients() {
-        return libraryUserRepository.findAllClients();
+        return libraryUserRepository.findAll();
     }
 }

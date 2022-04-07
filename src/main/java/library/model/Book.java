@@ -22,6 +22,11 @@ public class Book extends Article {
         this.title = name;
     }
 
+    @Override
+    public int dayEmprunt() {
+        return 21;
+    }
+
     public Book(String title, String author, String yearPublication, String articleType, String editor, int numbrePages) {
         this.title = title;
         this.author = author;

@@ -31,6 +31,11 @@ public class Emprunt {
     private LocalDateTime dateReturn;
     private boolean isReturn = false;
 
+    public Emprunt(Client client, Exemplaire exemplaire) {
+        this.client = client;
+        this.exemplaire = exemplaire;
+    }
+
     @Override
     public String toString() {
         return "Emprunt{" +

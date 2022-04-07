@@ -17,6 +17,6 @@ public interface LibraryUserRepository extends JpaRepository<LibraryUser, Long> 
     @Query("select c from Client c left join fetch c.amendes where c.id = :seachId")
     Optional<Client> getClientWithAmendes(@Param("seachId")long clientId);
 
-    @Query("select c from Client c ")
-    List<LibraryUser> findAllClients();
+//    @Query("select c from Client c ")
+//    List<LibraryUser> findAllClients();
 }

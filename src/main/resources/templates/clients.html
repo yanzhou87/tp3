@@ -8,6 +8,7 @@
 <h1>Page Client</h1>
 <table>
     <thead>
+    <th>Id</th>
     <th>Nom</th>
     <th>Prenom</th>
 
@@ -15,9 +16,9 @@
     <tbody>
     <th:block th:each="client, stat : ${clients}">
         <tr>
-            <td th:text="${client.getLastName()}"></td>
-            <td th:text="${client.getFirstName()}"></td>
-
+            <td th:text="${client.getId()}">1</td>
+            <td th:text="${client.getLastName()}">2</td>
+            <td th:text="${client.getFirstName()}">3</td>
         </tr>
     </th:block>
     </tbody>

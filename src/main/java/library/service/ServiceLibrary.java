@@ -14,20 +14,23 @@ import java.util.List;
 @Component
 public class ServiceLibrary {
 
-    @Autowired
     private ArticleRepository articleRepository;
 
-    @Autowired
     private LibraryUserRepository libraryUserRepository;
 
-    @Autowired
     private ExemplaireRepository exemplaireRepository;
 
-    @Autowired
     private EmpruntRepository empruntRepository;
 
-    @Autowired
     private AmendeRepository amendeRepository;
+
+    public ServiceLibrary(ArticleRepository articleRepository, LibraryUserRepository libraryUserRepository, ExemplaireRepository exemplaireRepository, EmpruntRepository empruntRepository, AmendeRepository amendeRepository) {
+        this.articleRepository = articleRepository;
+        this.libraryUserRepository = libraryUserRepository;
+        this.exemplaireRepository = exemplaireRepository;
+        this.empruntRepository = empruntRepository;
+        this.amendeRepository = amendeRepository;
+    }
 
     public Article saveArticle(Article article) {
         return articleRepository.save(article);
