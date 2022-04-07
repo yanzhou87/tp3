@@ -69,6 +69,6 @@ public class ServiceClient {
     }
 
     public List<LibraryUser> findAllClients() {
-        return libraryUserRepository.findAll();
+        return libraryUserRepository.findAllClients();
     }
 }

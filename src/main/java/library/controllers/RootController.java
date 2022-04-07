@@ -59,5 +59,12 @@ public class RootController {
         model.addAttribute("saveClientForm", saveClientForm);
         return  "redirect:saveClient/" + saveClientForm.getId();
     }
+    @GetMapping("/clients")
+    public String getClients(Model model) {
+        model.addAttribute("pageTitle", "Mon Demo");
+        var clients = serviceClient.findAllClients();
+        model.addAttribute("clients", clients);
+        return "profs";
+    }
 }
 
