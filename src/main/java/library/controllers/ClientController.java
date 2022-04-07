@@ -23,8 +23,9 @@ public class ClientController {
     private ServiceLibrary serviceLibrary;
     private ServiceClient serviceClient;
 
-    public ClientController(ServiceLibrary serviceLibrary) {
+    public ClientController(ServiceLibrary serviceLibrary, ServiceClient serviceClient) {
         this.serviceLibrary = serviceLibrary;
+        this.serviceClient = serviceClient;
     }
 
     @GetMapping("/")

@@ -60,12 +60,12 @@ public class ServiceClient {
                     Amende amende = new Amende(client, duration.toDays());
                     amendeRepository.save(amende);
                     client.addAmende(amende);
+                    Client client1 = libraryUserRepository.getClientWithAmendes(client.getId()).get();
+                    client1.setEmprunts(libraryUserRepository.findClientById(client.getId()).get().getEmprunts());
+                    libraryUserRepository.save(client1);
                 }
             }
         }
-        Client client1 = libraryUserRepository.getClientWithAmendes(client.getId()).get();
-        client1.setEmprunts(libraryUserRepository.findClientById(client.getId()).get().getEmprunts());
-        libraryUserRepository.save(client1);
     }
 
     public List<LibraryUser> findAllClients() {

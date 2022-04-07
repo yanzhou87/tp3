@@ -1,8 +1,9 @@
 package library.forms;
 
 import library.model.Book;
-import library.model.Client;
+import lombok.Data;
 
+@Data
 public class SaveBookForm {
     private String id;
     private String title;
@@ -21,7 +22,7 @@ public class SaveBookForm {
         this(Long.toString(book.getId()),book.getTitle(),book.getAuthor(),book.getArticleType());
     }
 
-    public Book toClient(){
+    public Book toBook(){
         return new Book(title,author,articleType);
     }
 }
