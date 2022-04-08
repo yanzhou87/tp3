@@ -21,10 +21,10 @@ public class EmpruntController {
         this.serviceLibrary = serviceLibrary;
     }
 
-//    @GetMapping("/empruntcreate")
-//    public String getEmpruntCreate(@ModelAttribute SaveEmpruntForm saveEmpruntForm, @PathVariable(required = false) String id, Model model) {
-//        saveEmpruntForm = new SaveEmpruntForm(new Emprunt());
-//        model.addAttribute("saveEmpruntForm", saveEmpruntForm);
-//        return "saveEmprunt";
-//    }
+    @GetMapping("/empruntcreate")
+    public String getEmpruntCreate(@ModelAttribute SaveEmpruntForm saveEmpruntForm, @PathVariable(required = false) String id, Model model) {
+        saveEmpruntForm = new SaveEmpruntForm(new Emprunt());
+        model.addAttribute("saveEmpruntForm", saveEmpruntForm);
+        return "saveEmprunt";
+    }
 }
