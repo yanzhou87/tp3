@@ -83,7 +83,12 @@ public class ServiceLibrary {
         libraryUserRepository.save(client);
 
     }
-//    public void addEmpruntToClient(Emprunt emprunt, Client client) {
+
+    public EmpruntRepository getEmpruntRepository() {
+        return empruntRepository;
+    }
+
+    //    public void addEmpruntToClient(Emprunt emprunt, Client client) {
 //
 //        client.addEmprunt(emprunt);
 //        libraryUserRepository.save(client);

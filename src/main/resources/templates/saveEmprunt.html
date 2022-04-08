@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Save Emprunt</title>
+</head>
+<body>
+<form action="#" th:action="@{/empruntcreate}" th:object="${saveEmpruntForm}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <table border="1">
+        <tr>
+
+            <td><label>Client Id</label></td>
+            <td><input type="number" th:field="*{client.id}"/></td>
+        </tr>
+        <tr>
+            <td><label>Exemplaire</label></td>
+            <td><input type="number" th:field="*{exemplaire.id}"/></td>
+        </tr>
+
+        <tr>
+            <td><input type="submit" value="Save"/></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

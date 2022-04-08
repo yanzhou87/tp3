@@ -33,15 +33,15 @@ public class BookController {
         model.addAttribute("saveBookForm", saveBookForm);
         return "saveBook";
     }
-
-    @GetMapping("/bookcreate/{id}")
-    public String getBookCreateWithId(@ModelAttribute SaveBookForm saveBookForm,
-                                 @PathVariable("id")String id,
-                                  Model model) {
-        saveBookForm = new SaveBookForm(new Book());
-        model.addAttribute("saveBookForm", saveBookForm);
-        return "saveBook";
-    }
+//
+//    @GetMapping("/bookcreate/{id}")
+//    public String getBookCreateWithId(@ModelAttribute SaveBookForm saveBookForm,
+//                                 @PathVariable("id")String id,
+//                                  Model model) {
+//        saveBookForm = new SaveBookForm(new Book());
+//        model.addAttribute("saveBookForm", saveBookForm);
+//        return "saveBook";
+//    }
 
     @PostMapping("/bookcreate")
     public String bookPost(@ModelAttribute SaveBookForm saveBookForm,
@@ -53,7 +53,8 @@ public class BookController {
         redirectAttributes.addFlashAttribute("saveBookForm",saveBookForm);
         saveBookForm = new SaveBookForm(new Book());
         model.addAttribute("saveBookForm", saveBookForm);
-        return  "redirect:bookcreate/" + saveBookForm.getId();
+        return  "redirect:bookcreate/";
+       // return  "redirect:bookcreate/" + saveBookForm.getId();
     }
 
 }

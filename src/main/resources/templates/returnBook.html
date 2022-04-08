@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Return Emprunt</title>
+</head>
+<body>
+<form action="#" th:action="@{/returncreate}" th:object="${saveReturnForm}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <table border="1">
+        <tr>
+
+            <td><label>Client Id</label></td>
+            <td><input type="number" th:field="*{client.id}"/></td>
+        </tr>
+        <tr>
+            <td><label>Exemplaire</label></td>
+            <td><input type="number" th:field="*{exemplaire.id}"/></td>
+        </tr>
+        <tr>
+            <td><label>Return Date</label></td>
+            <td><input type="datetime-local" th:field="*{dateReturn}"/></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Save"/></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
