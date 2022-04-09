@@ -46,6 +46,6 @@ public class ReturnController {
         redirectAttributes.addFlashAttribute("ReturnArticleForm",returnArticleForm);
 
         model.addAttribute("ReturnArticleForm", returnArticleForm);
-        return  "redirect:returncreate";
+        return  "redirect:emprunts";
     }
 }

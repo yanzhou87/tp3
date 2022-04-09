@@ -52,7 +52,7 @@ public class ServiceLibrary {
         boolean isAddExemplaire = false;
         Emprunt emprunt = new Emprunt();
 
-        if (article.getNombreExemplaires() != 1) {
+        if (article.getNombreExemplaires() != 0) {
             for (Exemplaire exemplaire : exemplaires) {
                 if (!exemplaire.isBorrowed() && !isAddExemplaire) {
                     emprunt.setExemplaire(exemplaire);

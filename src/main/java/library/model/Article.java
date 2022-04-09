@@ -30,7 +30,7 @@ public abstract class Article {
     protected String author;
     protected String yearPublication;
     protected String articleType;
-    protected int nombreExemplaires = 1;
+    protected int nombreExemplaires = 0;
 
     public Article(String title) {
         this.title = title;
