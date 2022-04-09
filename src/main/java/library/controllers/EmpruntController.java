@@ -4,6 +4,7 @@ import library.forms.SaveBookForm;
 import library.forms.SaveEmpruntForm;
 import library.model.Book;
 import library.model.Emprunt;
+import library.service.ServiceClient;
 import library.service.ServiceLibrary;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,9 +22,11 @@ public class EmpruntController {
     Logger logger = LoggerFactory.getLogger(EmpruntController.class);
 
     private ServiceLibrary serviceLibrary;
+    private ServiceClient serviceClient;
 
-    public EmpruntController(ServiceLibrary serviceLibrary) {
+    public EmpruntController(ServiceLibrary serviceLibrary, ServiceClient serviceClient) {
         this.serviceLibrary = serviceLibrary;
+        this.serviceClient = serviceClient;
     }
 
     @GetMapping("/empruntcreate")
@@ -44,6 +47,14 @@ public class EmpruntController {
         saveEmpruntForm = new SaveEmpruntForm(new Emprunt());
         model.addAttribute("saveEmpruntForm",saveEmpruntForm);
         return "redirect:empruntcreate";
+    }
+
+    @GetMapping("/emprunts")
+    public String getEmprunts(Model model) {
+        model.addAttribute("pageTitle", "Emprunts");
+        var emprunts = serviceClient.findAllEmprunts();
+        model.addAttribute("emprunts", emprunts);
+        return "emprunts";
     }
 
 }

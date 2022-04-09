@@ -9,8 +9,9 @@
 <table>
     <thead>
     <th>Id</th>
-    <th>Nom</th>
-    <th>Prenom</th>
+    <th>Title</th>
+    <th>Author</th>
+    <th>ArticleType</th>
 
     </thead>
     <tbody>
@@ -19,7 +20,7 @@
             <td th:text="${book.id}"></td>
             <td th:text="${book.getTitle()}"></td>
             <td th:text="${book.getAuthor()}"></td>
-            <td th:text="${book.getArticvleType}"></td>
+            <td th:text="${book.getArticleType}"></td>
         </tr>
     </th:block>
     </tbody>

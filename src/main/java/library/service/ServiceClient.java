@@ -72,4 +72,8 @@ public class ServiceClient {
     public List<LibraryUser> findAllClients() {
         return libraryUserRepository.findAll();
     }
+
+    public List<Article> findAllArticles() {
+        return articleRepository.findAll();
+    }
 }

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Page Emprunt</h1>
+<table>
+    <thead>
+    <th>Id</th>
+    <th>Client</th>
+    <th>Article</th>
+
+    </thead>
+    <tbody>
+    <th:block th:each="emprunt, stat : ${emprunts}">
+        <tr id="saveEmpruntForm">
+            <td th:text="${emprunt.id}">1</td>
+            <td th:text="${emprunt.getClient.getLastName()}">2</td>
+            <td th:text="${emprunt.getExemplaire().getArticle().getTitle()}">3</td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+</body>
+</html>

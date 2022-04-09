@@ -63,7 +63,7 @@ public class BookController {
     @GetMapping("/books")
     public String getBooks(Model model) {
         model.addAttribute("pageTitle", "Books");
-        var books = serviceClient.findAllBooks();
+        var books = serviceClient.findAllArticles();
         model.addAttribute("books", books);
         return "books";
     }
