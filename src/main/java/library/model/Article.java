@@ -32,7 +32,6 @@ public abstract class Article {
     protected String articleType;
     protected int nombreExemplaires = 1;
 
-
     public Article(String title) {
         this.title = title;
     }

@@ -5,19 +5,19 @@
     <title>Return Article</title>
 </head>
 <body>
-<form action="#" th:action="@{/returncreate}" th:object="${saveReturnForm}" method="post">
+<form action="#" th:action="@{/returncreate}" th:object="${returnArticleForm}" method="post">
     <input type="hidden" th:field="*{id}"/>
     <table border="1">
         <tr>
 
             <td><label>Client Id</label></td>
-            <td><input type="number" th:field="*{client.id}"/></td>
+            <td><input type="number" th:field="*{clientId}"/></td>
         </tr>
         <tr>
-            <td><label>Exemplaire</label></td>
-            <td><input type="number" th:field="*{exemplaire.id}"/></td>
+            <td><label>Exemplaire Id</label></td>
+            <td><input type="number" th:field="*{exemplaireId}"/></td>
         </tr>
-        <tr>
+      <tr>
             <td><label>Return Date</label></td>
             <td><input type="datetime-local" th:field="*{dateReturn}"/></td>
         </tr>

@@ -36,6 +36,17 @@ public class Emprunt {
         this.exemplaire = exemplaire;
     }
 
+    public Emprunt(Client client, Exemplaire exemplaire, LocalDateTime dateReturn,boolean isReturn) {
+        this.client = client;
+        this.exemplaire = exemplaire;
+        this.dateEmprunt = dateReturn;
+        this.isReturn = isReturn;
+    }
+
+    public Emprunt(Client client) {
+        this.client = client;
+    }
+
     @Override
     public String toString() {
         return "Emprunt{" +

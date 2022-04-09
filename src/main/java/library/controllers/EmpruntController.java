@@ -3,7 +3,9 @@ package library.controllers;
 import library.forms.SaveBookForm;
 import library.forms.SaveEmpruntForm;
 import library.model.Book;
+import library.model.Client;
 import library.model.Emprunt;
+import library.model.Exemplaire;
 import library.service.ServiceClient;
 import library.service.ServiceLibrary;
 import org.slf4j.Logger;
@@ -16,6 +18,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Controller
 public class EmpruntController {
@@ -31,7 +36,7 @@ public class EmpruntController {
 
     @GetMapping("/empruntcreate")
     public String getEmpruntCreate(@ModelAttribute SaveEmpruntForm saveEmpruntForm, @PathVariable(required = false) String id, Model model) {
-        saveEmpruntForm = new SaveEmpruntForm(new Emprunt());
+      //  saveEmpruntForm = new SaveEmpruntForm(new Emprunt());
         model.addAttribute("saveEmpruntForm", saveEmpruntForm);
         return "saveEmprunt";
     }
@@ -42,11 +47,16 @@ public class EmpruntController {
                               Model model,
                               RedirectAttributes redirectAttributes){
         logger.info("emprunt : " + saveEmpruntForm);
-        serviceLibrary.getEmpruntRepository().save(saveEmpruntForm.toEmprunt());
+        List<Exemplaire> exemplaires = serviceClient.findALLExemplairesByArticleId(saveEmpruntForm.getArticleId());
+        Client client = serviceClient.findClientById(saveEmpruntForm.getClientId()).get();
+
+        Emprunt emprunt = serviceLibrary.saveEmprunt(serviceClient.findArticleById(saveEmpruntForm.getArticleId()).get()
+                ,exemplaires, client, LocalDateTime.now());
+        serviceLibrary.addEmpruntToClient(emprunt.getId(),client.getId());
         redirectAttributes.addFlashAttribute("saveEmpruntForm",saveEmpruntForm);
-        saveEmpruntForm = new SaveEmpruntForm(new Emprunt());
         model.addAttribute("saveEmpruntForm",saveEmpruntForm);
-        return "redirect:empruntcreate";
+
+        return "redirect:emprunts";
     }
 
     @GetMapping("/emprunts")

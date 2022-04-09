@@ -80,4 +80,12 @@ public class ServiceClient {
     public List<Emprunt> findAllEmprunts() {
         return empruntRepository.findAll();
     }
+
+    public Exemplaire findExemplaireByid(long exemplaireId) {
+        return exemplaireRepository.findById(exemplaireId).get();
+    }
+
+    public List<Exemplaire> findALLExemplairesByArticleId(long articleId) {
+        return exemplaireRepository.findByArticleId(articleId);
+    }
 }

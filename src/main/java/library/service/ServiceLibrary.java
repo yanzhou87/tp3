@@ -3,7 +3,6 @@ package library.service;
 
 import library.model.*;
 import library.repository.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -53,9 +52,8 @@ public class ServiceLibrary {
         boolean isAddExemplaire = false;
         Emprunt emprunt = new Emprunt();
 
-        if (article.getNombreExemplaires() != 0) {
+        if (article.getNombreExemplaires() != 1) {
             for (Exemplaire exemplaire : exemplaires) {
-
                 if (!exemplaire.isBorrowed() && !isAddExemplaire) {
                     emprunt.setExemplaire(exemplaire);
                     emprunt.setClient(client);
@@ -88,11 +86,5 @@ public class ServiceLibrary {
         return empruntRepository;
     }
 
-    //    public void addEmpruntToClient(Emprunt emprunt, Client client) {
-//
-//        client.addEmprunt(emprunt);
-//        libraryUserRepository.save(client);
-//
-//    }
 }
 

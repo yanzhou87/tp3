@@ -11,14 +11,16 @@
     <th>Id</th>
     <th>Client</th>
     <th>Article</th>
+    <th>isReturn</th>
 
     </thead>
     <tbody>
     <th:block th:each="emprunt, stat : ${emprunts}">
         <tr id="saveEmpruntForm">
-            <td th:text="${emprunt.id}">1</td>
-            <td th:text="${emprunt.getClient.getLastName()}">2</td>
-            <td th:text="${emprunt.getExemplaire().getArticle().getTitle()}">3</td>
+            <td th:text="${emprunt.id}"></td>
+            <td th:text="${emprunt.getClient.getLastName()}"></td>
+            <td th:text="${emprunt.getExemplaire().getArticle().getTitle()}"></td>
+            <td th:text="${emprunt.isReturn}"></td>
         </tr>
     </th:block>
     </tbody>

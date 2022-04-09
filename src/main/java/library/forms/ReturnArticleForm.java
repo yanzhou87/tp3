@@ -1,27 +1,26 @@
 package library.forms;
 
-import library.model.Client;
-import library.model.Exemplaire;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Data
 public class ReturnArticleForm {
-    private Client client;
-    private Exemplaire exemplaire;
+    private String id;
+    private long clientId;
+    private long exemplaireId;
     private LocalDateTime dateReturn;
 
-    public ReturnArticleForm(Client client, Exemplaire exemplaire, LocalDateTime dateReturn) {
-        this.client = client;
-        this.exemplaire = exemplaire;
+    public ReturnArticleForm(String id, long clientId, long exemplaireId,LocalDateTime dateReturn) {
+        this.id = id;
+        this.clientId = clientId;
+        this.exemplaireId = exemplaireId;
         this.dateReturn = dateReturn;
     }
 
     public ReturnArticleForm() {
     }
 
-    public ReturnArticleForm(Client client) {
-        this.client = client;
-    }
+
+
 }

@@ -68,9 +68,9 @@ public class ClientController {
         redirectAttributes.addFlashAttribute("saveClientForm",saveClientForm);
         saveClientForm = new SaveClientForm(new Client());
         model.addAttribute("saveClientForm", saveClientForm);
-        return "clients";
-       // return  "redirect:clientcreate/" + saveClientForm.getId();
+        return "redirect:clients";
     }
+
     @GetMapping("/clients")
     public String getClients(Model model) {
         model.addAttribute("pageTitle", "Mon Demo");
