@@ -2,6 +2,7 @@ package library.controllers;
 
 import library.forms.SaveBookForm;
 import library.model.Book;
+import library.service.ServiceClient;
 import library.service.ServiceLibrary;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,9 +20,11 @@ public class BookController {
     Logger logger = LoggerFactory.getLogger(BookController.class);
 
     private ServiceLibrary serviceLibrary;
+    private ServiceClient serviceClient;
 
-    public BookController(ServiceLibrary serviceLibrary) {
+    public BookController(ServiceLibrary serviceLibrary, ServiceClient serviceClient) {
         this.serviceLibrary = serviceLibrary;
+        this.serviceClient = serviceClient;
     }
 
     @GetMapping("/bookcreate")
@@ -55,6 +58,14 @@ public class BookController {
         model.addAttribute("saveBookForm", saveBookForm);
         return  "redirect:bookcreate/";
        // return  "redirect:bookcreate/" + saveBookForm.getId();
+    }
+
+    @GetMapping("/books")
+    public String getBooks(Model model) {
+        model.addAttribute("pageTitle", "Books");
+        var books = serviceClient.findAllBooks();
+        model.addAttribute("books", books);
+        return "books";
     }
 
 }
