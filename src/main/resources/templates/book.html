@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Page Book</h1>
+<table>
+    <thead>
+    <th>Id</th>
+    <th>Nom</th>
+    <th>Prenom</th>
+
+    </thead>
+    <tbody>
+    <th:block th:each="book, stat : ${books}">
+        <tr id="saveBookForm">
+            <td th:text="${book.id}"></td>
+            <td th:text="${book.getTitle()}"></td>
+            <td th:text="${book.getAuthor()}"></td>
+            <td th:text="${book.getArticvleType}"></td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+</body>
+</html>

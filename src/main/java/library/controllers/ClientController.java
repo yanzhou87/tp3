@@ -55,7 +55,7 @@ public class ClientController {
                           ) {
         saveClientForm = new SaveClientForm(new Client());
         model.addAttribute("saveClientForm", saveClientForm);
-        return "saveClient";
+        return "clients";
     }
 
     @PostMapping("/clientcreate")
@@ -68,8 +68,8 @@ public class ClientController {
         redirectAttributes.addFlashAttribute("saveClientForm",saveClientForm);
         saveClientForm = new SaveClientForm(new Client());
         model.addAttribute("saveClientForm", saveClientForm);
-     //   return "clients";
-        return  "redirect:clientcreate/" + saveClientForm.getId();
+        return "clients";
+       // return  "redirect:clientcreate/" + saveClientForm.getId();
     }
     @GetMapping("/clients")
     public String getClients(Model model) {
