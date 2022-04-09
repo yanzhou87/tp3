@@ -76,4 +76,8 @@ public class ServiceClient {
     public List<Article> findAllArticles() {
         return articleRepository.findAll();
     }
+
+    public List<Emprunt> findAllEmprunts() {
+        return empruntRepository.findAll();
+    }
 }
