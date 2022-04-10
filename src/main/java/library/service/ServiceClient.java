@@ -5,7 +5,8 @@ import library.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,7 +44,8 @@ public class ServiceClient {
         return empruntRepository.findEmpruntByClientId(id);
     }
 
-    public void returnEmprunt(Client client, long bookId, LocalDateTime dateReturn) {
+    public void returnEmprunt(Client client, long bookId, LocalDate dateReturn) {
+
         for (Emprunt emprunt : client.getEmprunts()) {
             if (emprunt.getExemplaire().getArticle().getId() == bookId) {
                 emprunt.setReturn(true);
@@ -55,17 +57,16 @@ public class ServiceClient {
                 exemplaireRepository.save(emprunt.getExemplaire());
                 empruntRepository.save(emprunt);
 
-                java.time.Duration duration = java.time.Duration.between( emprunt.getDateEmprunt(),emprunt.getDateReturn());
-
-                if (duration.toDays() > emprunt.getExemplaire().getArticle().dayEmprunt()) {
-                    Amende amende = new Amende(client, duration.toDays());
+                Period duration = Period.between(emprunt.getDateEmprunt(), emprunt.getDateReturn());
+                if (duration.getDays() > emprunt.getExemplaire().getArticle().dayEmprunt()) {
+                    Amende amende = new Amende(client, duration.getDays());
                     amendeRepository.save(amende);
                     client.addAmende(amende);
                     Client client1 = libraryUserRepository.getClientWithAmendes(client.getId()).get();
                     client1.setEmprunts(libraryUserRepository.findClientById(client.getId()).get().getEmprunts());
                     libraryUserRepository.save(client1);
                 }
-            }
+             }
         }
     }
 

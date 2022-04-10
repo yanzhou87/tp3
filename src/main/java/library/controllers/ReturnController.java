@@ -14,8 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.time.LocalDateTime;
-
+import java.time.LocalDate;
 
 @Controller
 public class ReturnController {
@@ -41,10 +40,8 @@ public class ReturnController {
                            Model model,
                            RedirectAttributes redirectAttributes) {
         logger.info("return: " + returnArticleForm);
-        serviceClient.returnEmprunt(serviceClient.findClientById(returnArticleForm.getClientId()).get(),returnArticleForm.getExemplaireId(),  LocalDateTime.of(2023,3,3,12,20));
-
+        serviceClient.returnEmprunt(serviceClient.findClientById(returnArticleForm.getClientId()).get(),returnArticleForm.getArticleId(),LocalDate.now());
         redirectAttributes.addFlashAttribute("ReturnArticleForm",returnArticleForm);
-
         model.addAttribute("ReturnArticleForm", returnArticleForm);
         return  "redirect:emprunts";
     }

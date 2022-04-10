@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -27,8 +28,8 @@ public class Emprunt {
     @JoinColumn(name = "EXEMPLAIRE_ID")
     private Exemplaire exemplaire;
 
-    private LocalDateTime dateEmprunt;
-    private LocalDateTime dateReturn;
+    private LocalDate dateEmprunt;
+    private LocalDate dateReturn;
     private boolean isReturn = false;
 
     public Emprunt(Client client, Exemplaire exemplaire) {
@@ -36,7 +37,7 @@ public class Emprunt {
         this.exemplaire = exemplaire;
     }
 
-    public Emprunt(Client client, Exemplaire exemplaire, LocalDateTime dateReturn,boolean isReturn) {
+    public Emprunt(Client client, Exemplaire exemplaire, LocalDate dateReturn,boolean isReturn) {
         this.client = client;
         this.exemplaire = exemplaire;
         this.dateEmprunt = dateReturn;

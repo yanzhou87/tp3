@@ -1975,7 +1975,7 @@
 											"top": 411,
 											"width": 172.92919921875,
 											"height": 13,
-											"text": "-dateEmprunt: LocalDateTime",
+											"text": "-dateEmprunt: LocalDate",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1992,7 +1992,7 @@
 											"top": 426,
 											"width": 172.92919921875,
 											"height": 13,
-											"text": "-dateReturn: LocalDateTime",
+											"text": "-dateReturn: LocalDate",
 											"horizontalAlignment": 0
 										},
 										{
@@ -5724,7 +5724,7 @@
 							},
 							"name": "dateEmprunt",
 							"visibility": "private",
-							"type": "LocalDateTime"
+							"type": "LocalDate"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -5734,7 +5734,7 @@
 							},
 							"name": "dateReturn",
 							"visibility": "private",
-							"type": "LocalDateTime"
+							"type": "LocalDate"
 						},
 						{
 							"_type": "UMLAttribute",

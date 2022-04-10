@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -51,7 +52,7 @@ public class EmpruntController {
         Client client = serviceClient.findClientById(saveEmpruntForm.getClientId()).get();
 
         Emprunt emprunt = serviceLibrary.saveEmprunt(serviceClient.findArticleById(saveEmpruntForm.getArticleId()).get()
-                ,exemplaires, client, LocalDateTime.now());
+                ,exemplaires, client, LocalDate.now());
         serviceLibrary.addEmpruntToClient(emprunt.getId(),client.getId());
         redirectAttributes.addFlashAttribute("saveEmpruntForm",saveEmpruntForm);
         model.addAttribute("saveEmpruntForm",saveEmpruntForm);

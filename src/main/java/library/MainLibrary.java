@@ -9,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -47,7 +48,7 @@ public class MainLibrary implements CommandLineRunner {
 
         LibraryUser client = serviceLibrary.saveUser(new Client("Yan", "Zhou", 99));
 
-        Emprunt emprunt = serviceLibrary.saveEmprunt(book, exemplaires, (Client) client, LocalDateTime.now());
+        Emprunt emprunt = serviceLibrary.saveEmprunt(book, exemplaires, (Client) client, LocalDate.now());
 
         List<Object[]> emprunts = serviceClient.findEmpruntByClientId(client.getId());
         Object[] emprunt1 = emprunts.get(0);
@@ -60,7 +61,7 @@ public class MainLibrary implements CommandLineRunner {
         System.out.println(serviceClient.findClientById(client.getId()));
 
         System.out.println("///// après retourner un emprunt //////");
-        serviceClient.returnEmprunt((Client) client, book.getId(), LocalDateTime.of(2003,3,3,3,3));
+        serviceClient.returnEmprunt((Client) client, book.getId(), LocalDate.of(2024,3,3));
         System.out.println(serviceClient.findClientById(client.getId()));
 
     }

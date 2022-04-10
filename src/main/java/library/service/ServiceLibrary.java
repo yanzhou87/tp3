@@ -5,6 +5,7 @@ import library.model.*;
 import library.repository.*;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +49,7 @@ public class ServiceLibrary {
         return libraryUserRepository.save(libraryUseruser);
     }
 
-    public Emprunt saveEmprunt(Article article, List<Exemplaire> exemplaires, Client client, LocalDateTime date) {
+    public Emprunt saveEmprunt(Article article, List<Exemplaire> exemplaires, Client client, LocalDate date) {
         boolean isAddExemplaire = false;
         Emprunt emprunt = new Emprunt();
 
