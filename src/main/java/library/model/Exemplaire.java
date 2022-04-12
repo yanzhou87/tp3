@@ -21,7 +21,19 @@ public class Exemplaire {
     private Article article;
     private boolean isBorrowed = false;
 
+    private long empruntId;
+
     public Exemplaire(Article article) {
         this.article = article;
+    }
+
+    @Override
+    public String toString() {
+        return "Exemplaire{" +
+                "id=" + id +
+                ", article=" + article +
+                ", isBorrowed=" + isBorrowed +
+                ", empruntId=" + empruntId +
+                '}';
     }
 }

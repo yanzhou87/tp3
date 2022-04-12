@@ -53,7 +53,7 @@ public class Emprunt {
         return "Emprunt{" +
                 "id=" + id +
                 ", client=" + client.firstName +
-                ", exemplaire=" + exemplaire +
+                ", exemplaire=" + exemplaire+
                 ", date=" + dateEmprunt +
                 ", isReturn=" + isReturn +
                 '}';

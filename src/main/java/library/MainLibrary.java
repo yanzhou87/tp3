@@ -49,6 +49,7 @@ public class MainLibrary implements CommandLineRunner {
         LibraryUser client = serviceLibrary.saveUser(new Client("Yan", "Zhou", 99));
 
         Emprunt emprunt = serviceLibrary.saveEmprunt(book, exemplaires, (Client) client, LocalDate.now());
+        emprunt.getExemplaire().setEmpruntId(emprunt.getId());
 
         List<Object[]> emprunts = serviceClient.findEmpruntByClientId(client.getId());
         Object[] emprunt1 = emprunts.get(0);

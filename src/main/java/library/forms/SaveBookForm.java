@@ -17,7 +17,9 @@ public class SaveBookForm {
         this.articleType = articleType;
     }
 
-    public SaveBookForm(){}
+    public SaveBookForm(){
+        this(new Book());
+    }
     public SaveBookForm(Book book){
         this(Long.toString(book.getId()),book.getTitle(),book.getAuthor(),book.getArticleType());
     }

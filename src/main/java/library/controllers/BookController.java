@@ -32,7 +32,7 @@ public class BookController {
                                 @PathVariable(required = false)String id,
                                 Model model
                                ) {
-        saveBookForm = new SaveBookForm(new Book());
+        saveBookForm = new SaveBookForm();
         model.addAttribute("saveBookForm", saveBookForm);
         return "saveBook";
     }
@@ -45,7 +45,7 @@ public class BookController {
         logger.info("book: " + saveBookForm);
         serviceLibrary.saveArticle(saveBookForm.toBook());
         redirectAttributes.addFlashAttribute("saveBookForm",saveBookForm);
-        saveBookForm = new SaveBookForm(new Book());
+        saveBookForm = new SaveBookForm();
         model.addAttribute("saveBookForm", saveBookForm);
         return  "redirect:books";
     }
