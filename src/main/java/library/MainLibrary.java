@@ -62,7 +62,7 @@ public class MainLibrary implements CommandLineRunner {
         System.out.println(serviceClient.findClientById(client.getId()));
 
         System.out.println("///// après retourner un emprunt //////");
-        serviceClient.returnEmprunt((Client) client, book.getId(), LocalDate.of(2024,3,3));
+        serviceClient.returnEmprunt((Client) client, book.getId(), LocalDate.of(2022,6,1));
         System.out.println(serviceClient.findClientById(client.getId()));
 
     }

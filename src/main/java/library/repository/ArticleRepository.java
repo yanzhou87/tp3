@@ -1,7 +1,6 @@
 package library.repository;
 
 import library.model.Article;
-import library.model.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

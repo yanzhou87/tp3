@@ -5,6 +5,7 @@ import library.model.*;
 import library.repository.*;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -70,6 +71,7 @@ public class ServiceLibrary {
         return empruntRepository.save(emprunt);
     }
 
+    @Transactional
     public void addEmpruntToClient(long empruntId, long clientId) {
         var empruntOpt = empruntRepository.findEmpruntById(empruntId);
         var clientOpt = libraryUserRepository.findClientById(clientId);

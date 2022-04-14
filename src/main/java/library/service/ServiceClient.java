@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
 
@@ -57,9 +58,10 @@ public class ServiceClient {
                 exemplaireRepository.save(emprunt.getExemplaire());
                 empruntRepository.save(emprunt);
 
-                Period duration = Period.between(emprunt.getDateEmprunt(), emprunt.getDateReturn());
-                if (duration.getDays() > emprunt.getExemplaire().getArticle().dayEmprunt()) {
-                    Amende amende = new Amende(client, duration.getDays());
+                long duration = ChronoUnit.DAYS.between(emprunt.getDateEmprunt(),emprunt.getDateReturn());
+
+                if (duration > emprunt.getExemplaire().getArticle().dayEmprunt()) {
+                    Amende amende = new Amende(client, duration);
                     amendeRepository.save(amende);
                     client.addAmende(amende);
                     Client client1 = libraryUserRepository.getClientWithAmendes(client.getId()).get();
